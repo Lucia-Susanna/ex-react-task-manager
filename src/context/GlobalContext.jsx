@@ -14,21 +14,29 @@ const GlobalProvider = ({ children }) => {
         tasks,
         addTask,
         removeTask,
-        updateTask
+        updateTask,
+        newTask
     } = useTasks();
-
-    const newTask = (e) => {
-        e.preventDefault()
-        if (title.length < 1 || title.includes(symbols)) {
-            alert('il titolo della task è obbligatorio e non può contenere caratteri speciali')
-        } else {
-            console.log(`${title}, ${description.current.value}, ${status.current.value}`);
-
+    const handlerNewTask = async (e) => {
+        e.preventDefault();
+        if (title.length < 1 || title.split('').some(char => symbols.includes(char))) {
+            alert('il titolo della task è obbligatorio e non può contenere caratteri speciali');
+            return;
         }
-
-
-
-    }
+        try {
+            await addTask({
+                title,
+                description: description.current.value,
+                status: status.current.value
+            });
+            alert('Task creata con successo!');
+            setTitle('');
+            description.current.value = '';
+            status.current.value = 'To do';
+        } catch (err) {
+            alert(err.message);
+        }
+    };
 
     const value = {
         tasks,
@@ -39,6 +47,7 @@ const GlobalProvider = ({ children }) => {
         setTitle,
         description,
         status,
+        handlerNewTask,
         newTask
     };
 

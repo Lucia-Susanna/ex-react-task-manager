@@ -7,11 +7,11 @@ const AddTask = () => {
         setTitle,
         description,
         status,
-        newTask
+        handlerNewTask
     } = useGlobalContext()
 
     return (
-        <form onSubmit={newTask}>
+        <form onSubmit={handlerNewTask}>
             <div>
                 <label htmlFor="title">Nome della task </label>
                 <input

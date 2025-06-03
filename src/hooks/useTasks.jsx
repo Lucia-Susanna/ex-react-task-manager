@@ -4,7 +4,11 @@ import axios from "axios";
 const useTasks = () => {
     const api_url = import.meta.env.VITE_API_URL;
     const [tasks, setTasks] = useState([]);
-
+    const [newTask, setNewTask] = useState({
+        title: '',
+        description: '',
+        status: ''
+    })
     useEffect(() => {
         axios
             .get(api_url + '/tasks')
@@ -12,8 +16,20 @@ const useTasks = () => {
             .catch((err) => console.error(err));
     }, [api_url]);
 
-    const addTask = (task) => {
-        // da implementare
+    const addTask = async (newTask) => {
+        try {
+            const res = await axios.post(api_url + '/tasks', newTask, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+            if (res.data.success) {
+                setTasks((prev) => [...prev, res.data.task]);
+                return res.data.task;
+            } else {
+                throw new Error(res.data.message);
+            }
+        } catch (err) {
+            throw new Error(err.response?.data?.message || err.message);
+        }
     };
 
     const removeTask = (taskId) => {
@@ -29,6 +45,8 @@ const useTasks = () => {
         addTask,
         removeTask,
         updateTask,
+        newTask,
+
     };
 };
 
