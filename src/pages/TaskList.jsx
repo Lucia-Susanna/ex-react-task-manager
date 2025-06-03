@@ -1,16 +1,10 @@
 import { useGlobalContext } from "../context/GlobalContext"
-import { useEffect } from "react"
 import TaskRow from "../components/TaskRow"
 const TaskList = () => {
 
     const {
-        fetchTasks,
         tasks
     } = useGlobalContext()
-
-    useEffect(() => {
-        fetchTasks()
-    }, [])
 
     return (
         <div>
@@ -24,7 +18,6 @@ const TaskList = () => {
                 </thead>
                 <tbody>
                     {tasks.map((task) => <TaskRow key={task.id} item={task} />)}
-
                 </tbody>
             </table>
         </div>
