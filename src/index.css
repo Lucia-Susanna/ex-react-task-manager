@@ -28,5 +28,18 @@ main {
     width: 90%;
     background-color: beige;
     padding: 30px;
+
+    .done {
+      color: green;
+
+    }
+
+    .doing {
+      color: yellow;
+    }
+
+    .to_do {
+      color: red;
+    }
   }
 }
