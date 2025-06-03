@@ -2,20 +2,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import TaskList from "./pages/TaskList"
 import AddTask from "./pages/AddTask"
 import DefaultLayout from "./layouts/DefaultLayout"
-
+import { GlobalProvider } from "./context/GlobalContext"
 
 const App = () => {
   return (
-    <div>
+    <GlobalProvider>
       <BrowserRouter>
         <Routes>
-          <Route Component={DefaultLayout}>
-            <Route path="/" Component={TaskList} />
-            <Route path="/AddTask" Component={AddTask} />
+          <Route element={<DefaultLayout />}>
+            <Route path="/" element={<TaskList />} />
+            <Route path="/AddTask" element={<AddTask />} />
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </GlobalProvider>
   )
 }
 
