@@ -45,8 +45,26 @@ const useTasks = () => {
         }
     };
 
-    const updateTask = (task) => {
-        // da implementare
+    const updateTask = async (updatedTask) => {
+        try {
+            const res = await axios.put(
+                api_url + `/tasks/${updatedTask.id}`,
+                updatedTask,
+                { headers: { 'Content-Type': 'application/json' } }
+            );
+            if (res.data.success) {
+                setTasks((prev) =>
+                    prev.map(task =>
+                        task.id.toString() === updatedTask.id.toString() ? res.data.task : task
+                    )
+                );
+                return res.data.task;
+            } else {
+                throw new Error(res.data.message);
+            }
+        } catch (err) {
+            throw new Error(err.response?.data?.message || err.message);
+        }
     };
 
     return {
