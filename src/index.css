@@ -1,45 +1,124 @@
+/* Reset e base */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Segoe UI', 'Trebuchet MS', Arial, sans-serif;
+}
 
+body {
+  background: #f6f7fb;
+  color: #222;
+  min-height: 100vh;
+}
 
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+  color: #2d6cdf;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #174ea6;
 }
 
 header {
-  background-color: lightcoral;
-  padding: 15px;
-
-  a {
-    color: beige;
-    margin: 20px;
-  }
+  background-color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-main {
+header a {
+  color: #2d6cdf;
+  margin: 0 20px;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
 
-  .container {
-    margin: auto;
-    min-height: 100vh;
-    width: 90%;
-    background-color: beige;
-    padding: 30px;
+main .container {
+  margin: auto;
+  min-height: 70vh;
+  width: 95%;
+  max-width: 800px;
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
 
-    .done {
-      color: green;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background: #fafbfc;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
 
-    }
+th,
+td {
+  padding: 14px 12px;
+  text-align: left;
+}
 
-    .doing {
-      color: yellow;
-    }
+th {
+  background: #f0f2f5;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 2px solid #e3e6ea;
+}
 
-    .to_do {
-      color: red;
-    }
-  }
+tr:nth-child(even) {
+  background: #f7f8fa;
+}
+
+
+.done {
+  background-color: #2ecc40;
+  font-weight: 600;
+}
+
+.doing {
+  background-color: #f1c40f;
+  font-weight: 600;
+}
+
+.to_do {
+  background-color: #e74c3c;
+  font-weight: 600;
+}
+
+button {
+  background: #2d6cdf;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 18px;
+  transition: background 0.2s;
+  font-weight: 500;
+}
+
+button:hover {
+  background: #174ea6;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d6cdf;
+}
+
+p {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  color: #444;
 }

@@ -32,9 +32,17 @@ const useTasks = () => {
         }
     };
 
-    const removeTask = (taskId) => {
-        console.log(`delete task con id ${taskId}`);
-
+    const removeTask = async (taskId) => {
+        try {
+            const res = await axios.delete(api_url + `/tasks/${taskId}`);
+            if (res.data.success) {
+                setTasks((prev) => prev.filter(task => task.id.toString() !== taskId.toString()));
+            } else {
+                throw new Error(res.data.message);
+            }
+        } catch (err) {
+            throw new Error(err.response?.data?.message || err.message);
+        }
     };
 
     const updateTask = (task) => {
