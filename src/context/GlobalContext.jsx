@@ -1,5 +1,6 @@
 import { createContext, useContext, useRef, useState } from "react";
 import useTasks from "../hooks/useTasks.jsx";
+import axios from "axios";
 
 const GlobalContext = createContext()
 
@@ -8,8 +9,9 @@ const GlobalProvider = ({ children }) => {
     const [title, setTitle] = useState('')
     const description = useRef()
     const status = useRef()
+    const [selectedTask, setSelectedTask] = useState()
     const symbols = "!@#$%^&*()-_=+[]{}|;:'\\\",.<>?/`~";
-
+    const api_url = import.meta.env.VITE_API_URL;
     const {
         tasks,
         addTask,
@@ -17,6 +19,7 @@ const GlobalProvider = ({ children }) => {
         updateTask,
         newTask
     } = useTasks();
+
     const handlerNewTask = async (e) => {
         e.preventDefault();
         if (title.length < 1 || title.split('').some(char => symbols.includes(char))) {

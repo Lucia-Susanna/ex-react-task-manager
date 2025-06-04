@@ -33,7 +33,8 @@ const useTasks = () => {
     };
 
     const removeTask = (taskId) => {
-        // da implementare
+        console.log(`delete task con id ${taskId}`);
+
     };
 
     const updateTask = (task) => {
