@@ -1,13 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom"
 import { useGlobalContext } from "../context/GlobalContext"
-
-
+import Modal from "../components/Modal"
+import { useState } from "react"
 const TaskDetail = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const { tasks, removeTask } = useGlobalContext()
     const selectedTask = tasks.find(task => task.id.toString() === id)
-
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
     const handleDelete = async () => {
         try {
             await removeTask(id)
@@ -25,7 +25,17 @@ const TaskDetail = () => {
             <p>{selectedTask?.status}</p>
             <p>{new Date(selectedTask?.createdAt).toLocaleDateString()}</p>
 
-            <button onClick={handleDelete}>Elimina task</button>
+            <button onClick={() => setShowDeleteModal(true)}>Elimina task</button>
+
+            <Modal
+                title="Eliminazione task"
+                content="Sei sicuro di voler eliminare questa task?"
+                show={showDeleteModal}
+                onClose={() => setShowDeleteModal(false)}
+                onConfirm={handleDelete}
+                confirmText="Elimina"
+
+            />
         </div>
     )
 }

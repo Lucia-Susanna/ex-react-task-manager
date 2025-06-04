@@ -122,3 +122,52 @@ p {
   line-height: 1.5;
   color: #444;
 }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 10px;
+  padding: 32px 28px;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal h3 {
+  margin-bottom: 18px;
+  font-size: 1.3rem;
+  color: #2d6cdf;
+}
+
+.modal-action {
+  margin-top: 24px;
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+.modal-action button:first-child {
+  background: #e3e6ea;
+  color: #222;
+}
+
+.modal-action button:last-child {
+  background: #e74c3c;
+  color: #fff;
+}
