@@ -11,63 +11,43 @@ const AddTask = () => {
     } = useGlobalContext()
 
     return (
-        <form onSubmit={handlerNewTask} style={{ maxWidth: 500, margin: "0 auto", background: "#fafbfc", padding: 32, borderRadius: 10, boxShadow: "0 2px 8px rgba(0,0,0,0.03)" }}>
-            <h2 style={{ textAlign: "center", marginBottom: 24 }}>Aggiungi una nuova task</h2>
-            <div style={{ marginBottom: 18 }}>
-                <label htmlFor="title" style={{ display: "block", marginBottom: 6, fontWeight: 500 }}>Nome della task</label>
+        <form onSubmit={handlerNewTask} className="task-form">
+            <h2 className="task-form-title">Aggiungi una nuova task</h2>
+            <div className="task-form-group">
+                <label htmlFor="title" className="task-form-label">Nome della task</label>
                 <input
                     type="text"
                     name="title"
                     id="title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    style={{
-                        width: "100%",
-                        padding: "10px 12px",
-                        borderRadius: 6,
-                        border: "1px solid #e3e6ea",
-                        fontSize: "1rem"
-                    }}
+                    className="task-form-input"
                     required
                 />
             </div>
-            <div style={{ marginBottom: 18 }}>
-                <label htmlFor="description" style={{ display: "block", marginBottom: 6, fontWeight: 500 }}>Descrizione della task</label>
+            <div className="task-form-group">
+                <label htmlFor="description" className="task-form-label">Descrizione della task</label>
                 <textarea
                     id="description"
                     ref={description}
-                    style={{
-                        width: "100%",
-                        padding: "10px 12px",
-                        borderRadius: 6,
-                        border: "1px solid #e3e6ea",
-                        fontSize: "1rem",
-                        minHeight: 80,
-                        resize: "vertical"
-                    }}
+                    className="task-form-textarea"
                 />
             </div>
-            <div style={{ marginBottom: 24 }}>
-                <label htmlFor="status" style={{ display: "block", marginBottom: 6, fontWeight: 500 }}>Stato della task</label>
+            <div className="task-form-group">
+                <label htmlFor="status" className="task-form-label">Stato della task</label>
                 <select
                     name="status"
                     id="status"
                     ref={status}
                     defaultValue='To do'
-                    style={{
-                        width: "100%",
-                        padding: "10px 12px",
-                        borderRadius: 6,
-                        border: "1px solid #e3e6ea",
-                        fontSize: "1rem"
-                    }}
+                    className="task-form-select"
                 >
                     <option value="To do">To do</option>
                     <option value="Doing">Doing</option>
                     <option value="Done">Done</option>
                 </select>
             </div>
-            <button type="submit" style={{ width: "100%" }}>Invia</button>
+            <button type="submit" className="task-form-submit">Invia</button>
         </form>
     )
 }
